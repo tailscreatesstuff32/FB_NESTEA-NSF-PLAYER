@@ -15,3 +15,5 @@ compiles fine with freebasic 1.0.7
 <br/>
 <br/>
 code needs cleanup more fixes and changes soon!
+<br/>
+feel free to contrib! :)
