@@ -1479,11 +1479,12 @@ End Sub
 	'NSFplayer = NSFplayer()
    ' loadNSFRom("Super Mario Bros. 3 (1988-10-23)(Nintendo EAD)(Nintendo).nsf") '- WORKS
   'loadNSFRom("Mega Man 3 [RockMan 3 - Dr. Wily no Saigo!] (1990-09-28)(Capcom).nsf") '- WORKS
-      loadNSFRom("Chip 'n Dale Rescue Rangers [Chip to Dale no Daisakusen] (1990-06-08)(Capcom).nsf") '- WORKS
+     ' loadNSFRom("Chip 'n Dale Rescue Rangers [Chip to Dale no Daisakusen] (1990-06-08)(Capcom).nsf") '- WORKS
 	'loadNSFRom("C:\Users\Gamer\Desktop\Silver Surfer (EMU).zophar\Silver Surfer (SFX).nsf")' - WORKS
 	   ' loadNSFRom("Mega Man 5 [RockMan 5 - Blues no Wana!] (1992-12-04)(Capcom).nsf") '- WORKS
 
-	
+	     loadNSFRom("nova.nsf") '- WORKS
+
 	
 			'loadNSFRom("Alfred Chicken (1993)(Twilight)(Mindscape).nsf")' - WORKS
 			
