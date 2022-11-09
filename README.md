@@ -2,6 +2,8 @@
 
 this is an NES audio player made in freebasic!
 <br/>
+CPU type 1
+<br/>
 also features extra chips:
 <br/>
 VRC6 chip - needs minor fixing
