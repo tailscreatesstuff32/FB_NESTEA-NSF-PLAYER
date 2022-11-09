@@ -87,8 +87,8 @@ type as NSFplayer _Bus
 
 '#include "N163-old.bi"
 #include "EXTRA-CHIPS\N163.bi"
-#include "EXTRA-CHIPS\VRC6.bi" 'needs improving its good as mesen though
-#include "EXTRA-CHIPS\MMC5.bi" ' WIP
+#include "VRC6.bi" 'needs improving its good as mesen though
+#include "MMC5.bi" ' WIP
 
 'print "in Bus.bi"
 

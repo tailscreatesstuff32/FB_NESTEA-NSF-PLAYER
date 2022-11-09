@@ -1157,7 +1157,7 @@ End function
 'End Function
 '	
 
-#include "CPU\olc6502.bas"
+#include "EXTRA-CHIPS\olc6502.bas"
 #include "APU\APU.bas"	
 	
 	
