@@ -5,7 +5,7 @@ dim shared paused as boolean = FALSE
 #include "NSF.bi"
 #include "NSF.bas"
 #include once "windows.bi"
-#include "AUDIO_NSF.bas"
+#include "APU\AUDIO_NSF.bas"
 #include "fbgfx.bi"
 
 dim shared audio_hndler as AudioHandler ptr 
@@ -280,8 +280,6 @@ print "duty: ";player.apu.p2Duty
 	'player.n163._write(&HE000,0)
 	elseif checkchip = CHIPSET.VRC6 then
 	print "CHIPSET: ";"2A02 + VRC6"
-	elseif checkchip = CHIPSET.MMC5 then
-		print "CHIPSET: ";"2A02 + MMC5"
 	endif
 
 'print "sample length: ";player.apu.dmcSampleLength
@@ -302,11 +300,11 @@ print "duty: ";player.apu.p2Duty
 'print player.n163.internal_ram_auto_increment
 
 
-   if player.VRC6_enabled then
+if player.VRC6_enabled then
 	
 	
 	
-	'Locate y1+7, 70
+	Locate y1+7, 70
 	'color rgb(0,128,128)
 	'print finalVRC6output' outputlevel'player.VRC6.outputlevels
 	
@@ -321,18 +319,15 @@ print "duty: ";player.apu.p2Duty
 	Locate y1+11, 70
 	print "$B000: ";hex1(player.VRC6.sawregs.r0,2);" ";hex1(player.VRC6.sawregs.r1,2);" ";hex1(player.VRC6.sawregs.r2,2)
 
-   
-	
-
 	
 	
-   EndIf
+EndIf
 
 
 
 
 
- if player.n163_enabled then
+if player.n163_enabled then
 'locate y1+7,50
 locate y1+18,70
 
@@ -376,44 +371,30 @@ locate 15,70
 
 
 
- EndIf
+EndIf
 
- if player.MMC5_enabled then
+'if player.VRC6_enabled then
 	
 	
-	'
-	'Locate y1+7, 70
-	''color rgb(0,128,128)
-	''print finalVRC6output' outputlevel'player.VRC6.outputlevels
-	'
-	'Locate y1+8, 70
-	'color rgb(0,128,128)
-	'print "MMC5";
-	'color rgb(128+64,0,0)
-	'Locate y1+9, 70
-	'print "$5000: ";hex1(MMC5_pulse1_reg0,2);" ";hex1(MMC5_pulse1_reg1,2);" ";hex1(MMC5_pulse1_reg2,2);" ";hex1(MMC5_pulse1_reg3,2)
-	'Locate y1+10, 70
-	'print "$5004: ";hex1(MMC5_pulse2_reg0,2);" ";hex1(MMC5_pulse2_reg1,2);" ";hex1(MMC5_pulse2_reg2,2);" ";hex1(MMC5_pulse2_reg3,2)
-	'
-	' Locate y1+11, 70
- ' print "$5008: ";hex1(player.VRC6.sawregs.r0,2);" ";hex1(player.VRC6.sawregs.r1,2);" ";hex1(player.VRC6.sawregs.r2,2)
-
-			'Locate y1+7, 50
+	
+	Locate y1+7, 70
 	'color rgb(0,128,128)
 	'print finalVRC6output' outputlevel'player.VRC6.outputlevels
 	
-	Locate y1+0, 50
+	Locate y1+8, 70
 	color rgb(0,128,128)
 	print "MMC5";
 	color rgb(128+64,0,0)
-	Locate y1+1, 50
+	Locate y1+9, 70
 	print "$5000: ";hex1(MMC5_pulse1_reg0,2);" ";hex1(MMC5_pulse1_reg1,2);" ";hex1(MMC5_pulse1_reg2,2);" ";hex1(MMC5_pulse1_reg3,2)
-	Locate y1+2, 50
+	Locate y1+10, 70
 	print "$5004: ";hex1(MMC5_pulse2_reg0,2);" ";hex1(MMC5_pulse2_reg1,2);" ";hex1(MMC5_pulse2_reg2,2);" ";hex1(MMC5_pulse2_reg3,2)
+	'Locate y1+11, 70
+'[	print "$5008: ";hex1(player.VRC6.sawregs.r0,2);" ";hex1(player.VRC6.sawregs.r1,2);" ";hex1(player.VRC6.sawregs.r2,2)
+
 	
 	
-	
- EndIf
+'EndIf
 
 
 'print final1
@@ -1498,7 +1479,7 @@ End Sub
 	'NSFplayer = NSFplayer()
    ' loadNSFRom("Super Mario Bros. 3 (1988-10-23)(Nintendo EAD)(Nintendo).nsf") '- WORKS
   'loadNSFRom("Mega Man 3 [RockMan 3 - Dr. Wily no Saigo!] (1990-09-28)(Capcom).nsf") '- WORKS
- '    loadNSFRom("Chip 'n Dale Rescue Rangers [Chip to Dale no Daisakusen] (1990-06-08)(Capcom).nsf") '- WORKS
+      loadNSFRom("Chip 'n Dale Rescue Rangers [Chip to Dale no Daisakusen] (1990-06-08)(Capcom).nsf") '- WORKS
 	'loadNSFRom("C:\Users\Gamer\Desktop\Silver Surfer (EMU).zophar\Silver Surfer (SFX).nsf")' - WORKS
 	   ' loadNSFRom("Mega Man 5 [RockMan 5 - Blues no Wana!] (1992-12-04)(Capcom).nsf") '- WORKS
 
@@ -1513,7 +1494,7 @@ End Sub
 		'loadNSFRom("Captain Planet and the Planeteers (1991-09)(Gray Matter)(Mindscape).nsf")' - DOESNT WORKS
 
 	 '  loadNSFRom("Dr. Mario (1990-07-27)(Nintendo R&D1)(Nintendo).nsf") 
-	 'loadNSFRom("Mega Man 2 [RockMan 2 - Dr. Wily no Nazo] (1988-12-24)(Capcom).nsf")' - WORKS
+	'loadNSFRom("Mega Man 2 [RockMan 2 - Dr. Wily no Nazo] (1988-12-24)(Capcom).nsf")' - WORKS
 	'loadNSFRom("SMB.nsf")
 
 '	If  Then
@@ -1549,16 +1530,14 @@ End Sub
 	' loadNSFRom("advkirb005.nsf")
 	 
 	' loadNSFRom("advkirb0003.nsf")
-	 'loadNSFRom("DMG-APAE-USA_track06.nsf")
-	 
-	  'loadNSFRom("DMG-APAE-USA_track22.nsf") 'gym leader battle
-	 
-	  'loadNSFRom("DMG-APAE-USA_track23.nsf")
+	'loadNSFRom("DMG-APAE-USA_track06.nsf")
+	 'loadNSFRom("DMG-APAE-USA_track22.nsf")
+	' loadNSFRom("DMG-APAE-USA_track23.nsf")
 	 
 	
 	'loadNSFRom("Shovel_Knight_Music.nsf")'for testing
 	 
-	 'loadNSFRom("DMG-L6J_track020.nsf")
+	'loadNSFRom("DMG-L6J_track020.nsf")
 	
 
 	 
@@ -1568,16 +1547,17 @@ End Sub
 	  	
 	 
 	   'loadNSFRom("DMG-L6J_track7.nsf")
-	  'loadNSFRom("Vs. Shadow Queen_full.nsf")    
-     'loadNSFRom("x naut fortress.nsf")
-    'loadNSFRom("antasma.nsf") 
-	 'loadNSFRom("DMG-APAE-USA_track06.nsf") 'pokemon gym
-	 'loadNSFRom("DMG-L6J_track23.nsf") 'Macro Zone stage1   'PULSE1,PULSE2, NOISE, N163
+	   
+    'loadNSFRom("Vs. Shadow Queen_full.nsf")    
+   'loadNSFRom("x naut fortress.nsf")
+   'loadNSFRom("antasma.nsf") 
+	'loadNSFRom("DMG-APAE-USA_track06.nsf") 'pokemon gym
+	'loadNSFRom("DMG-L6J_track23.nsf") 'Macro Zone stage1   'PULSE1,PULSE2, NOISE, N163
 	'loadNSFRom("DMG-L6J_track01.nsf") ' SML2 Athletic1
 	'loadNSFRom("DMG-L6J_track20.nsf") ' SML2 Athletic2
-	 'loadNSFRom("DMG-L6J_track17_loop.nsf") 'stage music 2
+	'loadNSFRom("DMG-L6J_track17_loop.nsf") 'stage music 2
 	  
-	 ' loadNSFRom("DMG-L6J_track11.nsf")
+	' loadNSFRom("DMG-L6J_track11.nsf")
 	
 	'loadNSFRom("n163_sintest.nsf")
 	'loadNSFRom("sintest2.nsf")
@@ -1588,40 +1568,26 @@ End Sub
 	 
 	 	 'loadNSFRom("alfchicken.nsf")
 	
-	 ' loadNSFRom("DMG-NBA_track00004.nsf") ' Battleship gameboy
+	' loadNSFRom("DMG-NBA_track00004.nsf") ' Battleship gameboy
 	 
 	' loadNSFRom("sky.nsf")
-	
-	
-	'loadNSFRom("Sonic 3D Blast-ppz2.nsf")
-	 'loadNSFRom("Sonic 3 & Knuckles VRC6 Part 1-ssz.nsf")
-	'loadNSFRom("Sonic 3 & Knuckles VRC6 Part 1-FB1.nsf")
-	'loadNSFRom("Sonic 3 & Knuckles VRC6 Part 2-AL.nsf ")
-	'loadNSFRom("Sonic 3 & Knuckles VRC6 Part 2-BP.nsf ")
-	'loadNSFRom("Sonic 3 & Knuckles VRC6 Part 1-SZ2.nsf")
-	'loadNSFRom("Sonic 3 & Knuckles VRC6 Part 1-AI2.nsf")
-	loadNSFRom("Sonic 3 & Knuckles VRC6 Part 1-TDZ.nsf")
-	
-	
-	
-	'loadNSFRom("Hidden Palace Zone.nsf") 
-	
-	     'loadNSFRom("VRC6- Lava Reef Act 1.nsf") 
-	     
-	 	    'loadNSFRom("Sonic_3_-_Hydrocity_Act_2.nsf") 
-' loadNSFRom("finalZone.nsf") 
+	'  loadNSFRom("VRC6- Lava Reef Act 1.nsf") 
+	 	 'loadNSFRom("Sonic_3_-_Hydrocity_Act_2.nsf") 
+'loadNSFRom("finalZone.nsf") 
 'loadNSFRom("Crisis City (Classic) - Sonic Generations [8-Bit,0CC MMC5+N163-3].nsf") 
- 'loadNSFRom("Freedom Planet - Aqua Tunnel 1.nsf") 
+'loadNSFRom("Freedom Planet - Aqua Tunnel 1.nsf") 
 'loadNSFRom("Boss - Freedom Planet.nsf") 
- 'loadNSFRom("BL_mnsg_oedocastle.nsf") 
+'loadNSFRom("BL_mnsg_oedocastle.nsf") 
 	'loadNSFRom("flyingbattery.nsf") 
 	
 	
+	'loadNSFRom("David Crane's A Boy and His Blob - Trouble on Blobolonia [Fushigi na Blobby - Blobania no Kiki] (1990-01)(Imagineering)(Nintendo).nsf")
 	
-	
+	'loadNSFRom("Batman - Return of The Joker [Dynamite Batman] (1991-12-20)(Sunsoft).nsf")
+
 	 'loadNSFRom("DMG-ABUE-USA_track10.nsf")
-	  'loadNSFRom("DMG-ABUE-USA_track0010.nsf")
-	 	 'loadNSFRom("DMG-APAE-USA_track21.nsf")
+	 'loadNSFRom("DMG-ABUE-USA_track0010.nsf")
+	 	'loadNSFRom("DMG-APAE-USA_track21.nsf")
 	 
 	End Sub
 
