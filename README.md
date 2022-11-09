@@ -18,6 +18,9 @@ MMC5 - WIP
 compiles fine with freebasic 1.0.7
 <br/>
 <br/>
+to change NSF file you will need to change it in the NSFVisual.bas
+<br/>
+<br/>
 code needs cleanup more fixes and changes soon!
 <br/>
 feel free to contrib! :)
