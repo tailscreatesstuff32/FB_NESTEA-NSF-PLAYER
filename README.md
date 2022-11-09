@@ -2,7 +2,9 @@
 
 this is an NES audio player made in freebasic!
 <br/>
+<br/>
 CPU type 1
+<br/>
 <br/>
 also features extra chips:
 <br/>
