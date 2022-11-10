@@ -1413,8 +1413,24 @@ player.playsong(currentsong)
  	
  	
  end if
- '
  
+ if KEYPRESSED(FB.SC_B) = false then
+ 	
+ 					cls
+				currentsong-=1 
+				
+   currentsong = iif(currentsong < 1,1,currentsong)
+   
+	player.playsong(currentsong)
+		drawVisuals2(offx,offy)
+ 'drawvisuals()
+
+
+ 	
+ 	
+ 	
+ 	
+ end if
  
  'sleep(9)
  '	dim as uint64_t end1 	= SDL_GetPerformanceCounter()
