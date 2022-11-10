@@ -99,7 +99,7 @@ DEF_APU = 0
 VRC6 = (1 shl 0)
 VRC7 = (1 shl 1) 'FUTURE
 FDS  = (1 shl 2) 'FUTURE
-MC5  = (1 shl 3)  'FUTURE
+MMC5  = (1 shl 3)  'FUTURE
 N163 = (1 shl 4)  
 N163_MMC5 = &H18'(1 shl 4)  'SOON
 S5B  = (1 shl 5) 'FUTURE
@@ -174,6 +174,7 @@ type NSFplayer
 	
 	n163_enabled as boolean
 	VRC6_enabled as boolean
+	MMC5_enabled as boolean
 	
 	'apu as olc2A02
 	'ppu as olc2C02
